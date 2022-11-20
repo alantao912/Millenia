@@ -29,7 +29,9 @@ Module System:
   - Every file is a "module". [file].[identifier] to access value
   - Imperative code is only allowed in functions. At the top level only declarations such as variable, struct, functions are allowed.
   - Entry point must have a main function.
-    
+
+
+
 ## Language syntax
 
 ### Basic syntax
@@ -212,3 +214,8 @@ loop {
     <statements>
 }
 ```
+
+
+
+<!-- TODO what about errors/crashes? -->
+
