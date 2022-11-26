@@ -1,0 +1,45 @@
+
+
+
+
+
+?start: bool_expr
+
+// examples
+// false or false and false or true
+// true and bob
+
+bool_expr: bool_expr_not
+
+
+?bool_expr_not: bool_expr_or
+             | "not" bool_expr_not -> not
+
+?bool_expr_or: bool_expr_and
+            | bool_expr_or "or" bool_expr_and
+
+
+?bool_expr_and: bool_atom
+              | bool_expr_and "and" bool_atom
+
+
+?bool_atom: bool_literal
+         | IDENTIFIER -> ident
+         | "(" bool_expr ")"
+
+bool_literal: KW_TRUE
+            | KW_FALSE
+
+
+KW_TRUE: "true"
+KW_FALSE: "false"
+
+IDENTIFIER: NAME
+
+
+%import common.CNAME -> NAME
+%import common.NUMBER
+%import common.WS_INLINE
+%import common.LCASE_LETTER
+
+%ignore WS_INLINE
